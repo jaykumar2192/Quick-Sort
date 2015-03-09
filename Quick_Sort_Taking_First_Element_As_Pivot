@@ -1,0 +1,55 @@
+import java.util.Scanner;
+public class Test {
+
+    static void partition(int[] ar) {
+              int start = 0;
+              int end = (ar.length-1);
+              QuickSort(ar, start, end); 
+              printArray(ar);
+       }
+    
+ static void QuickSort(int[] array, int from, int to) {
+     
+     if(from>=to)return;
+     
+        int pivot = array[from]; 
+        
+        int i = from, j, temp;
+        for(j = from + 1;j <= to;j++)
+        {
+                if(array[j] < pivot) 
+                {
+                        i = i + 1;
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                }
+        }
+       
+        temp = array[i];
+        array[i] = array[from];
+        array[from] = temp;
+        
+        QuickSort(array,from,i-1);
+        QuickSort(array,i+1,to);
+        
+  
+}   
+ 
+ static void printArray(int[] ar) {
+         for(int n: ar){
+            System.out.print(n+" ");
+         }
+           System.out.println("");
+      }
+       
+      public static void main(String[] args) {
+           Scanner in = new Scanner(System.in);
+           int n = in.nextInt();
+           int[] ar = new int[n];
+           for(int i=0;i<n;i++){
+              ar[i]=in.nextInt(); 
+           }
+           partition(ar);
+       }    
+}
