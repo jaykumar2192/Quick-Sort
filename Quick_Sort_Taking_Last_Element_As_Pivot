@@ -1,0 +1,52 @@
+public class Test2 {
+    
+    static void quickSort( int ar[] , int start , int end )
+ {
+  if( start < end )
+  {
+   int j = partition( ar , start , end ) ;
+      print(ar);
+   quickSort( ar , start , j - 1 ) ;
+     
+   quickSort( ar , j + 1 , end ) ;
+      
+  }
+ }
+    static int partition( int ar[] , int start , int end)
+	{
+		int item = ar[end] , p = start , temp ;
+		for( int i = start ; i < end ; i++ )
+		{
+			if( ar[i] <= item )
+			{ 
+				temp = ar[i] ;
+				ar[i] = ar[p] ;
+				ar[p] = temp ;
+				p++;
+			}
+			
+		}
+		ar[end] = ar[p] ;
+		ar[p] = item ;
+        
+		return p ;
+	}
+
+    static void print(int ar[]){
+        for(int i=0;i<ar.length;i++)
+            System.out.print(ar[i]+" ");
+        System.out.println();
+        
+    }
+    public static void main(String[] args) {
+        
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int ar[] = new int[n];
+        for(int i=0;i<n;i++){
+            ar[i] = in.nextInt();
+        }
+        
+        quickSort( ar , 0 , n - 1) ;
+    }
+}
